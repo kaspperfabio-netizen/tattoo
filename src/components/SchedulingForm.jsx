@@ -1,217 +1,192 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Send, Upload, CheckCircle2 } from 'lucide-react';
+import * as Label from '@radix-ui/react-label';
+import { toast } from 'sonner';
+import { schedulingSchema } from '../lib/schemas';
+import { cn } from '../lib/utils';
+import '../styles/SchedulingForm.css';
 
 const SchedulingForm = () => {
-    const [formState, setFormState] = useState('idle'); // idle, loading, success, error
-    const [formData, setFormData] = useState({
-        nome: '',
-        email: '',
-        whatsapp: '',
-        estilo: 'Fineline',
-        descricao: '',
-        referencia: null
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+        watch
+    } = useForm({
+        resolver: zodResolver(schedulingSchema),
+        defaultValues: {
+            estilo: 'Fineline'
+        }
     });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setFormState('loading');
+    const file = watch('referencia');
 
-        // Simulate API call
-        setTimeout(() => {
-            setFormState('success');
-            // Reset after success
-            setTimeout(() => setFormState('idle'), 5000);
-        }, 2000);
+    const onSubmit = async (data) => {
+        setIsSubmitting(true);
+        console.log("Form Data:", data);
+
+        try {
+            // Simulando API
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            setIsSuccess(true);
+            toast.success('Solicitação enviada com sucesso! Responderei em breve.');
+            reset();
+        } catch (error) {
+            toast.error('Ocorreu um erro ao enviar. Tente novamente.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
-
-    if (formState === 'success') {
+    if (isSuccess) {
         return (
-            <div className="flex flex-col items-center justify-center p-12 text-center h-full">
+            <section className="scheduling-section flex items-center justify-center py-20">
                 <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: 'spring', damping: 10 }}
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="success-container glass p-16 rounded-[3rem] text-center max-w-2xl mx-auto"
                 >
-                    <CheckCircle2 size={80} className="text-green-500 mb-6" />
+                    <CheckCircle2 size={80} className="text-accent mx-auto mb-8" />
+                    <h2 className="success-title mb-4">Solicitação Recebida!</h2>
+                    <p className="success-text mb-8">
+                        Obrigada pelo contato! Vou analisar sua ideia com muito carinho e te respondo no WhatsApp em até 48 horas.
+                    </p>
+                    <button
+                        onClick={() => setIsSuccess(false)}
+                        className="btn btn-primary px-10"
+                    >
+                        Novo Agendamento
+                    </button>
                 </motion.div>
-                <h3 className="text-3xl font-display mb-4">Pedido Enviado!</h3>
-                <p className="text-text-muted mb-8">
-                    Vitória recebeu suas informações e entrará em contato via WhatsApp em breve para conversar sobre seu projeto.
-                </p>
-                <button onClick={() => setFormState('idle')} className="btn btn-primary">
-                    Fazer outro pedido
-                </button>
-            </div>
+            </section>
         );
     }
 
     return (
-        <section id="agendamento" className="bg-secondary-bg relative">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
+        <section id="agendamento" className="scheduling-section">
+            <div className="scheduling-bg-decoration" />
 
             <div className="container relative z-10">
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
+                <div className="scheduling-grid">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
                         <span className="section-subtitle">Orçamento</span>
-                        <h2 className="section-title text-left mt-2">Agende sua Tattoo</h2>
-                        <p className="text-text-muted mb-10 max-w-lg">
+                        <h2 className="section-title scheduling-info-title">Agende sua Tattoo</h2>
+                        <p className="scheduling-info-text">
                             Conte-me sua ideia! Preencha o formulário abaixo com o máximo de detalhes.
-                            Anexe referências se tiver, isso ajuda muito a entender seu estilo.
                         </p>
 
-                        <div className="space-y-6">
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center text-accent flex-shrink-0">
-                                    <span className="font-bold">01</span>
-                                </div>
-                                <div>
-                                    <h4 className="font-medium text-lg">Briefing</h4>
-                                    <p className="text-sm text-text-muted">Explique o que deseja tatuar, o local do corpo e o tamanho aproximado.</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center text-accent flex-shrink-0">
-                                    <span className="font-bold">02</span>
-                                </div>
-                                <div>
-                                    <h4 className="font-medium text-lg">Orçamento</h4>
-                                    <p className="text-sm text-text-muted">Vou analisar seu pedido e enviar o valor estimado e as datas disponíveis.</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center text-accent flex-shrink-0">
-                                    <span className="font-bold">03</span>
-                                </div>
-                                <div>
-                                    <h4 className="font-medium text-lg">Sinal e Agenda</h4>
-                                    <p className="text-sm text-text-muted">Para garantir o horário, solicitamos um sinal que é descontado do valor final.</p>
-                                </div>
-                            </div>
+                        <div className="scheduling-steps">
+                            <Step number="01" title="Briefing" text="Explique o que deseja tatuar e o local do corpo." />
+                            <Step number="02" title="Análise" text="Vou analisar seu pedido e enviar o valor estimado." />
+                            <Step number="03" title="Reserva" text="Escolhemos a data e garantimos seu horário." />
                         </div>
                     </motion.div>
 
                     <motion.form
-                        onSubmit={handleSubmit}
+                        onSubmit={handleSubmit(onSubmit)}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-card-bg p-8 md:p-10 border border-neutral-800 rounded-sm shadow-2xl"
+                        className="scheduling-form"
                     >
-                        <div className="grid md:grid-cols-2 gap-6 mb-6">
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase tracking-widest font-semibold ml-1">Nome Completo</label>
+                        <div className="form-row">
+                            <div className="form-group">
+                                <Label.Root className="form-label">Nome Completo</Label.Root>
                                 <input
-                                    required
-                                    type="text"
-                                    name="nome"
-                                    value={formData.nome}
-                                    onChange={handleChange}
+                                    {...register('nome')}
                                     placeholder="Seu nome"
-                                    className="w-full bg-primary-bg border border-neutral-800 p-4 rounded-sm outline-none focus:border-accent transition-colors"
+                                    className={cn("form-input", errors.nome && "border-red-500/50")}
                                 />
+                                {errors.nome && <span className="text-[10px] text-red-400 mt-1 uppercase tracking-widest">{errors.nome.message}</span>}
                             </div>
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase tracking-widest font-semibold ml-1">WhatsApp</label>
+
+                            <div className="form-group">
+                                <Label.Root className="form-label">WhatsApp</Label.Root>
                                 <input
-                                    required
-                                    type="tel"
-                                    name="whatsapp"
-                                    value={formData.whatsapp}
-                                    onChange={handleChange}
+                                    {...register('whatsapp')}
                                     placeholder="(00) 00000-0000"
-                                    className="w-full bg-primary-bg border border-neutral-800 p-4 rounded-sm outline-none focus:border-accent transition-colors"
+                                    className={cn("form-input", errors.whatsapp && "border-red-500/50")}
                                 />
+                                {errors.whatsapp && <span className="text-[10px] text-red-400 mt-1 uppercase tracking-widest">{errors.whatsapp.message}</span>}
                             </div>
                         </div>
 
-                        <div className="space-y-2 mb-6">
-                            <label className="text-xs uppercase tracking-widest font-semibold ml-1">E-mail</label>
+                        <div className="form-group">
+                            <Label.Root className="form-label">E-mail</Label.Root>
                             <input
-                                required
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
+                                {...register('email')}
                                 placeholder="seu@email.com"
-                                className="w-full bg-primary-bg border border-neutral-800 p-4 rounded-sm outline-none focus:border-accent transition-colors"
+                                className={cn("form-input", errors.email && "border-red-500/50")}
                             />
+                            {errors.email && <span className="text-[10px] text-red-400 mt-1 uppercase tracking-widest">{errors.email.message}</span>}
                         </div>
 
-                        <div className="space-y-2 mb-6">
-                            <label className="text-xs uppercase tracking-widest font-semibold ml-1">Estilo Desejado</label>
-                            <select
-                                name="estilo"
-                                value={formData.estilo}
-                                onChange={handleChange}
-                                className="w-full bg-primary-bg border border-neutral-800 p-4 rounded-sm outline-none focus:border-accent transition-colors appearance-none"
-                            >
-                                <option>Fineline</option>
-                                <option>Blackwork</option>
-                                <option>Geek</option>
-                                <option>Outro</option>
+                        <div className="form-group">
+                            <Label.Root className="form-label">Estilo Desejado</Label.Root>
+                            <select {...register('estilo')} className="form-select">
+                                <option value="Fineline">Fineline</option>
+                                <option value="Blackwork">Blackwork</option>
+                                <option value="Geek">Geek</option>
+                                <option value="Outro">Outro</option>
                             </select>
                         </div>
 
-                        <div className="space-y-2 mb-6">
-                            <label className="text-xs uppercase tracking-widest font-semibold ml-1">Descrição do Projeto</label>
+                        <div className="form-group">
+                            <Label.Root className="form-label">Descrição do Projeto</Label.Root>
                             <textarea
-                                required
-                                name="descricao"
-                                value={formData.descricao}
-                                onChange={handleChange}
+                                {...register('descricao')}
                                 rows="4"
-                                placeholder="Conte sobre a ideia, local do corpo e tamanho aproximado em cm."
-                                className="w-full bg-primary-bg border border-neutral-800 p-4 rounded-sm outline-none focus:border-accent transition-colors resize-none"
-                            ></textarea>
+                                placeholder="Conte sobre a ideia, local e tamanho (cm)."
+                                className={cn("form-textarea", errors.descricao && "border-red-500/50")}
+                            />
+                            {errors.descricao && <span className="text-[10px] text-red-400 mt-1 uppercase tracking-widest">{errors.descricao.message}</span>}
                         </div>
 
-                        <div className="space-y-2 mb-8">
-                            <label className="text-xs uppercase tracking-widest font-semibold ml-1">Anexar Referência (Opcional)</label>
-                            <div className="relative">
-                                <input
-                                    type="file"
-                                    id="referencia"
-                                    className="hidden"
-                                    onChange={(e) => setFormData(prev => ({ ...prev, referencia: e.target.files[0] }))}
-                                />
-                                <label
-                                    htmlFor="referencia"
-                                    className="w-full flex items-center justify-center gap-3 bg-primary-bg border-2 border-dashed border-neutral-800 p-8 rounded-sm hover:border-accent hover:bg-accent/5 transition-all cursor-none interactive"
-                                >
-                                    <Upload size={24} className="text-accent" />
-                                    <span className="text-sm text-text-muted">
-                                        {formData.referencia ? formData.referencia.name : 'Clique para selecionar arquivos'}
-                                    </span>
-                                </label>
-                            </div>
+                        <div className="file-upload-container">
+                            <Label.Root className="form-label">Anexar Referência</Label.Root>
+                            <input
+                                type="file"
+                                id="referencia"
+                                className="hidden"
+                                {...register('referencia')}
+                            />
+                            <Label.Root
+                                htmlFor="referencia"
+                                className="file-upload-label interactive group"
+                            >
+                                <Upload size={24} className="text-accent group-hover:scale-110 transition-transform" />
+                                <span className="file-upload-text">
+                                    {file?.[0] ? file[0].name : 'Clique para selecionar arquivos'}
+                                </span>
+                            </Label.Root>
                         </div>
 
                         <button
                             type="submit"
-                            disabled={formState === 'loading'}
-                            className="w-full btn btn-cta gap-3 py-5 text-lg"
+                            disabled={isSubmitting}
+                            className="btn btn-primary form-submit-btn"
                         >
-                            {formState === 'loading' ? (
-                                <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            {isSubmitting ? (
+                                <div className="spinner" />
                             ) : (
                                 <>
-                                    Enviar Solicitação <Send size={20} />
+                                    Enviar Solicitação <Send size={20} className="ml-2" />
                                 </>
                             )}
                         </button>
 
-                        <p className="mt-6 text-[10px] text-center text-text-muted uppercase tracking-[2px]">
+                        <p className="form-footer-note">
                             Resposta em até 48h via WhatsApp
                         </p>
                     </motion.form>
@@ -220,5 +195,17 @@ const SchedulingForm = () => {
         </section>
     );
 };
+
+const Step = ({ number, title, text }) => (
+    <div className="step-item">
+        <div className="step-number">
+            <span>{number}</span>
+        </div>
+        <div className="step-content">
+            <h4>{title}</h4>
+            <p>{text}</p>
+        </div>
+    </div>
+);
 
 export default SchedulingForm;
