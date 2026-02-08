@@ -5,18 +5,21 @@ import { Instagram, Play, ExternalLink } from 'lucide-react';
 const InstagramFeed = () => {
     // Mock data with Unsplash images for a premium look
     const posts = [
-        { id: 1, type: 'video', src: 'https://images.unsplash.com/photo-1598133893813-21c6999201f8?auto=format&fit=crop&q=80&w=400' },
-        { id: 2, type: 'image', src: 'https://images.unsplash.com/photo-1550537687-c91072c4792d?auto=format&fit=crop&q=80&w=400' },
-        { id: 3, type: 'image', src: 'https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&q=80&w=400' },
-        { id: 4, type: 'video', src: 'https://images.unsplash.com/photo-1560707303-4e980ce876ad?auto=format&fit=crop&q=80&w=400' },
-        { id: 5, type: 'image', src: 'https://images.unsplash.com/photo-1611501655038-c29a3d0d7498?auto=format&fit=crop&q=80&w=400' },
-        { id: 6, type: 'image', src: 'https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?auto=format&fit=crop&q=80&w=400' },
+        { id: 1, type: 'image', src: '/assets/instagram/post1_pinned.webp' },
+        { id: 2, type: 'image', src: '/assets/instagram/post2_cobertura.webp' },
+        { id: 3, type: 'video', src: '/assets/instagram/reel1_girassol.jpg' },
+        { id: 4, type: 'image', src: '/assets/instagram/post3_ravena.webp' },
+        { id: 5, type: 'image', src: '/assets/instagram/post4_cicatrizada.webp' },
+        { id: 6, type: 'video', src: '/assets/instagram/reel2_butterfly.jpg' },
+        { id: 7, type: 'image', src: '/assets/instagram/post5_cat.webp' },
+        { id: 8, type: 'image', src: '/assets/instagram/post6_mewtwo.webp' },
+        { id: 9, type: 'image', src: '/assets/instagram/post8_kakashi.webp' },
     ];
 
     return (
-        <section className="bg-primary-bg overflow-hidden border-t border-accent/10">
+        <section id="instagramfeed" className="bg-primary-bg overflow-hidden border-t border-accent/10">
             <div className="container">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
                     <div className="text-left">
                         <span className="section-subtitle">No Instagram</span>
                         <h2 className="section-title text-left mb-0 leading-[0.8] mt-4">@vtori.ink</h2>

@@ -1,94 +1,140 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Sparkles, ShoppingBag } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 const Flashs = () => {
     const flashs = [
         {
             id: 1,
-            title: 'Blackwork Spider',
+            title: 'Lua Crescente',
             price: 'Orçar',
-            size: '15cm',
+            size: '5x8cm',
             available: true,
-            src: 'https://images.unsplash.com/photo-1550537687-c91072c4792d?auto=format&fit=crop&q=80&w=800'
+            src: '/assets/instagram/post1_pinned.webp'
         },
         {
             id: 2,
-            title: 'Botanical Dagger',
+            title: 'Serpente Minimalista',
             price: 'Orçar',
-            size: '12cm',
-            available: false,
-            src: 'https://images.unsplash.com/photo-1542151122-832f22b70f0f?auto=format&fit=crop&q=80&w=800'
+            size: '6x10cm',
+            available: true,
+            src: '/assets/instagram/post2_cobertura.webp'
         },
         {
             id: 3,
-            title: 'Cyber Sigil',
+            title: 'Flor Geométrica',
             price: 'Orçar',
-            size: '20cm',
-            available: true,
-            src: 'https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=800'
+            size: '7x7cm',
+            available: false,
+            src: '/assets/instagram/reel1_girassol.jpg'
         },
         {
             id: 4,
-            title: 'Mini Ghibli Spirit',
+            title: 'Borboleta Delicada',
             price: 'Orçar',
-            size: '5cm',
+            size: '5x6cm',
             available: true,
-            src: 'https://images.unsplash.com/photo-1611501655038-c29a3d0d7498?auto=format&fit=crop&q=80&w=800'
+            src: '/assets/instagram/reel2_butterfly.jpg'
         },
+        {
+            id: 5,
+            title: 'Dragão Minimalista',
+            price: 'Orçar',
+            size: '8x10cm',
+            available: true,
+            src: '/assets/instagram/post8_kakashi.webp'
+        },
+        {
+            id: 6,
+            title: 'Black Cat Mini',
+            price: 'Orçar',
+            size: '6x6cm',
+            available: false,
+            src: '/assets/instagram/post5_cat.webp'
+        }
     ];
 
     return (
-        <section id="flashs" className="bg-secondary-bg">
+        <section id="flashs" className="bg-secondary-bg overflow-hidden">
             <div className="container">
                 <div className="section-header">
                     <span className="section-subtitle">Exclusivos</span>
                     <h2 className="section-title">Flashs Disponíveis</h2>
-                    <p className="max-w-xl mx-auto text-text-muted text-lg">
+                    <p className="max-w-xl mx-auto text-text-muted text-lg font-light leading-relaxed">
                         Designs autorais prontos para serem tatuados. Projetos únicos que não se repetem.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {flashs.map((flash) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    {flashs.map((flash, idx) => (
                         <motion.div
                             key={flash.id}
-                            whileHover={{ y: -12 }}
-                            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                            className="bg-card-bg border border-neutral-800 rounded-2xl overflow-hidden flex flex-col group glass"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: idx * 0.1 }}
+                            whileHover={{ y: -10 }}
+                            className="bg-card-bg rounded-[2.5rem] overflow-hidden flex flex-col group glass border-white/[0.05] hover:border-accent/30 transition-all duration-500"
                         >
-                            <div className="aspect-square bg-neutral-900 relative overflow-hidden">
+                            <div className="aspect-[4/5] bg-neutral-900 relative overflow-hidden">
                                 <img
-                                    src={flash.src}
-                                    alt={flash.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
+                                        src={flash.src}
+                                        alt={flash.title}
+                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
+                                    />
 
-                                {/* Available Badge */}
-                                <div className={`absolute top-4 left-4 text-[9px] px-3 py-1 rounded-full uppercase tracking-widest font-bold glass ${flash.available ? 'text-green-400 border-green-400/30' : 'text-red-400 border-red-400/30'}`}>
-                                    {flash.available ? 'Disponível' : 'Reservado'}
+                                    <div className={cn(
+                                        "absolute top-6 left-6 text-[9px] px-4 py-1.5 rounded-full uppercase tracking-widest font-bold backdrop-blur-xl border border-white/10 shadow-xl z-20",
+                                        flash.available ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'
+                                    )}>
+                                        {flash.available ? 'Disponível' : 'Indisponível'}
+                                    </div>
+
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 </div>
                             </div>
 
                             <div className="p-8">
-                                <h3 className="text-xl font-display mb-2">{flash.title}</h3>
-                                <div className="flex justify-between items-center text-sm mb-6">
-                                    <span className="text-text-muted">Tam: {flash.size}</span>
-                                    <span className="text-accent font-bold tracking-widest uppercase text-xs">{flash.price}</span>
+                                <h3 className="text-xl md:text-2xl font-display mb-3 group-hover:text-accent transition-colors">{flash.title}</h3>
+                                <div className="flex justify-between items-center text-sm mb-8">
+                                    <span className="text-text-muted font-light">Tamanho: {flash.size}</span>
+                                    <span className="text-accent-deep font-bold tracking-[0.2em] uppercase text-[10px] bg-accent/10 px-3 py-1 rounded-full">{flash.price}</span>
                                 </div>
-                                <button
-                                    disabled={!flash.available}
-                                    className={`w-full btn text-[10px] ${flash.available ? 'btn-primary' : 'bg-neutral-800 text-neutral-600 cursor-not-allowed border-neutral-700'}`}
+                                <a
+                                    href={flash.available ? "#agendamento" : undefined}
+                                    className={cn(
+                                        "w-full btn text-[10px] tracking-widest font-bold h-12",
+                                        flash.available
+                                            ? 'btn-outline border-accent/20 hover:border-accent hover:bg-accent/10'
+                                            : 'bg-white/5 text-white/20 cursor-not-allowed border-transparent'
+                                    )}
                                 >
-                                    {flash.available ? 'Eu quero este' : 'Indisponível'}
-                                </button>
+                                    {flash.available ? 'RESERVAR AGORA' : 'INDISPONÍVEL'}
+                                </a>
                             </div>
                         </motion.div>
                     ))}
-                </div>
             </div>
-        </section>
+
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                className="mt-20 text-center"
+            >
+                <div className="inline-flex flex-col md:flex-row items-center gap-6 glass p-8 md:p-10 rounded-[2.5rem] border-accent/10">
+                    <div className="text-left">
+                        <h4 className="text-xl font-display mb-2">Quer uma arte personalizada?</h4>
+                        <p className="text-sm text-text-muted font-light">Desenvolvo projetos exclusivos baseados na sua história.</p>
+                    </div>
+                    <a href="#agendamento" className="btn btn-primary px-8 flex items-center gap-3">
+                        Criar meu projeto <Sparkles size={18} />
+                    </a>
+                </div>
+            </motion.div>
+        </div>
+        </section >
     );
 };
 
 export default Flashs;
-

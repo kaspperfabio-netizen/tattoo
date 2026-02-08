@@ -172,19 +172,30 @@ const SchedulingForm = () => {
                             </Label.Root>
                         </div>
 
-                        <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="btn btn-primary form-submit-btn"
-                        >
-                            {isSubmitting ? (
-                                <div className="spinner" />
-                            ) : (
-                                <>
-                                    Enviar Solicitação <Send size={20} className="ml-2" />
-                                </>
-                            )}
-                        </button>
+                        <div className="flex flex-col gap-4 mt-8">
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="btn btn-primary w-full flex items-center justify-center gap-2 h-14"
+                            >
+                                {isSubmitting ? (
+                                    <div className="spinner" />
+                                ) : (
+                                    <>
+                                        Enviar via WhatsApp <Send size={20} />
+                                    </>
+                                )}
+                            </button>
+
+                            <a
+                                href="https://calendly.com/vtori-ink"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn btn-outline border-white/10 w-full flex items-center justify-center gap-2 h-14"
+                            >
+                                Agendar via Calendly
+                            </a>
+                        </div>
 
                         <p className="form-footer-note">
                             Resposta em até 48h via WhatsApp

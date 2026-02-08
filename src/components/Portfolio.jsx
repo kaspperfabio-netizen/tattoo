@@ -14,54 +14,63 @@ const Portfolio = () => {
             id: 1,
             type: 'image',
             category: 'Fineline',
-            title: 'Minimalist Lotus',
+            title: 'Butterfly Delicada',
             description: 'Trabalho focado em fluidez e simetria absoluta.',
-            src: 'https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&q=80&w=800',
+            src: '/assets/instagram/reel2_butterfly.jpg',
             cta: { text: 'Orçar esta arte', link: '#agendamento' }
         },
         {
             id: 2,
             type: 'image',
             category: 'Blackwork',
-            title: 'Serpente Sombria',
+            title: 'Cobertura Floral',
             description: 'Contraste agressivo e texturas sólidas.',
-            src: 'https://images.unsplash.com/photo-1560707303-4e980ce876ad?auto=format&fit=crop&q=80&w=800',
+            src: '/assets/instagram/post2_cobertura.webp',
             cta: { text: 'Orçar esta arte', link: '#agendamento' }
         },
         {
             id: 3,
             type: 'image',
             category: 'Geek',
-            title: 'Universo Ghibli',
-            description: 'Uma homenagem poética à animação clássica.',
-            src: 'https://images.unsplash.com/photo-1611501655038-c29a3d0d7498?auto=format&fit=crop&q=80&w=800',
+            title: 'Ravena Persona',
+            description: 'Uma homenagem poética à personagem clássica.',
+            src: '/assets/instagram/post3_ravena.webp',
             cta: { text: 'Orçar esta arte', link: '#agendamento' }
         },
         {
             id: 4,
             type: 'image',
             category: 'Fineline',
-            title: 'Astronomia Sagrada',
-            description: 'Detalhes microscópicos inspirados no cosmos.',
-            src: 'https://images.unsplash.com/photo-1598133893813-21c6999201f8?auto=format&fit=crop&q=80&w=800',
+            title: 'Cicatrizada Perfeita',
+            description: 'Detalhes microscópicos após cicatrização.',
+            src: '/assets/instagram/post4_cicatrizada.webp',
             cta: { text: 'Orçar esta arte', link: '#agendamento' }
         },
         {
             id: 5,
             type: 'image',
             category: 'Blackwork',
-            title: 'Floral Macabro',
+            title: 'Girassóis Intensos',
             description: 'O encontro entre a beleza botânica e o sombrio.',
-            src: 'https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=800',
+            src: '/assets/instagram/reel1_girassol.jpg',
             cta: { text: 'Orçar esta arte', link: '#agendamento' }
         },
         {
             id: 6,
             type: 'image',
             category: 'Geek',
-            title: 'Cyberpunk Soul',
-            description: 'Estética futurista com traços autorais.',
-            src: 'https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?auto=format&fit=crop&q=80&w=800',
+            title: 'Kakashi Hatake',
+            description: 'Estética ninja com traços autorais.',
+            src: '/assets/instagram/post8_kakashi.webp',
+            cta: { text: 'Orçar esta arte', link: '#agendamento' }
+        },
+        {
+            id: 7,
+            type: 'image',
+            category: 'Geek',
+            title: 'Mewtwo Pokémon',
+            description: 'Primeiro Pokémon com toques de cor.',
+            src: '/assets/instagram/post6_mewtwo.webp',
             cta: { text: 'Orçar esta arte', link: '#agendamento' }
         },
     ];
@@ -84,12 +93,15 @@ const Portfolio = () => {
                 </div>
 
                 {/* Filters */}
-                <div className="flex flex-wrap justify-center gap-6 mb-16">
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-16">
                     {categories.map(cat => (
                         <button
                             key={cat}
                             onClick={() => setFilter(cat)}
-                            className={`px-10 py-3 rounded-full border transition-all text-xs tracking-[0.2em] uppercase font-bold interactive ${filter === cat ? 'bg-accent border-accent text-white shadow-[0_0_20px_rgba(188,119,188,0.4)]' : 'border-neutral-800 hover:border-accent/40 text-text-muted hover:text-text-main'}`}
+                            className={`px-8 md:px-10 py-3 rounded-full border transition-all text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold interactive ${filter === cat
+                                ? 'bg-accent border-accent text-white shadow-[0_10px_20px_rgba(188,119,188,0.3)]'
+                                : 'border-white/5 hover:border-accent/40 text-text-muted hover:text-text-main bg-white/5'
+                                }`}
                         >
                             {cat}
                         </button>
@@ -97,34 +109,46 @@ const Portfolio = () => {
                 </div>
 
                 {/* Grid */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     <AnimatePresence mode='popLayout'>
                         {filteredItems.map((item, idx) => (
                             <motion.div
                                 key={item.id}
                                 layout
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
                                 onClick={() => setSelectedIdx(idx)}
-                                className="relative aspect-[4/5] rounded-2xl overflow-hidden group cursor-none interactive glass"
+                                className="relative aspect-[4/5] rounded-[2rem] overflow-hidden group cursor-none interactive glass group"
                             >
-                                <img src={item.src} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <img
+                                    src={item.src}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                />
 
-                                {/* Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-end p-10 text-center">
-                                    <div className="mb-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                        <h3 className="text-2xl font-display mb-2 text-white">{item.title}</h3>
-                                        <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-bold">{item.category}</span>
+                                {/* Subtle Overlay Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-end p-8 md:p-10 text-center">
+                                    <div className="mb-6 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                        <h3 className="text-2xl md:text-3xl font-display mb-2 text-white">{item.title}</h3>
+                                        <div className="flex items-center justify-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                                            <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-bold">{item.category}</span>
+                                        </div>
                                     </div>
-                                    <div className="w-12 h-12 rounded-full glass flex items-center justify-center text-white mb-4">
-                                        <ZoomIn size={20} />
-                                    </div>
+
+                                    <motion.div
+                                        whileHover={{ scale: 1.1 }}
+                                        className="w-14 h-14 rounded-full glass flex items-center justify-center text-white mb-4 border-white/20 backdrop-blur-md"
+                                    >
+                                        <ZoomIn size={22} />
+                                    </motion.div>
                                 </div>
 
-                                <div className="absolute top-6 right-6">
-                                    <span className="glass text-[9px] px-3 py-1 rounded-full border border-white/10 uppercase tracking-widest font-bold">
+                                <div className="absolute top-6 right-6 z-10">
+                                    <span className="glass text-[9px] px-4 py-1.5 rounded-full border border-white/10 uppercase tracking-widest font-bold backdrop-blur-md">
                                         {item.category}
                                     </span>
                                 </div>
