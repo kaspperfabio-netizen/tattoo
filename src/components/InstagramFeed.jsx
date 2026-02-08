@@ -48,7 +48,7 @@ const InstagramFeed = () => {
         container.classList.remove('is-dragging');
         try {
             container.releasePointerCapture(event.pointerId);
-        } catch (error) {
+        } catch {
             // Ignore if pointer capture was already released.
         }
     };

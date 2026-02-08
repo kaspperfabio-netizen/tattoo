@@ -26,3 +26,6 @@ dist-ssr
 # MCP & Debug data
 chrome-devtools-data
 mcp.json
+
+.vercel
+.env*.local
