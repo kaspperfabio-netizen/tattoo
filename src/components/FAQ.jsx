@@ -47,9 +47,9 @@ const FAQ = () => {
                         >
                             <Accordion.Item value={faq.id} className="glass rounded-3xl overflow-hidden border-white/5 hover:border-accent/20 transition-all">
                                 <Accordion.Header>
-                                    <Accordion.Trigger className="flex w-full items-center justify-between p-8 text-left group">
-                                        <span className="text-lg md:text-xl font-display font-medium">{faq.question}</span>
-                                        <ChevronDown className="text-accent transition-transform duration-300 group-data-[state=open]:rotate-180" size={24} />
+                                    <Accordion.Trigger className="flex w-full items-center justify-between p-6 md:p-8 text-left group">
+                                        <span className="text-base md:text-lg font-display font-medium">{faq.question}</span>
+                                        <ChevronDown className="text-accent transition-transform duration-300 group-data-[state=open]:rotate-180" size={20} />
                                     </Accordion.Trigger>
                                 </Accordion.Header>
                                 <Accordion.Content className="p-8 pt-0 text-text-muted leading-relaxed font-light border-t border-white/5 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">

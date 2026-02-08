@@ -48,15 +48,25 @@ const Testimonials = () => {
         <section id="depoimentos" className="bg-secondary-bg overflow-hidden">
             <div className="container">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                    <div className="text-left">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="text-left"
+                    >
                         <span className="section-subtitle">Feedback</span>
                         <h2 className="section-title text-left mb-0 mt-2">O que dizem os clientes</h2>
-                    </div>
+                    </motion.div>
 
-                    <div className="flex gap-4">
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="flex gap-4"
+                    >
                         <button onClick={scrollPrev} className="p-4 glass rounded-full hover:bg-accent/20 transition-all"><ChevronLeft /></button>
                         <button onClick={scrollNext} className="p-4 glass rounded-full hover:bg-accent/20 transition-all"><ChevronRight /></button>
-                    </div>
+                    </motion.div>
                 </div>
 
                 <div className="embla" ref={emblaRef}>

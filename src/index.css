@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-bg: #050505;
-  --color-secondary-bg: #0c0c0c;
-  --color-card-bg: #121212;
-  --color-text-main: #f8f8f8;
-  --color-text-muted: #888888;
-  --color-accent: #bc77bc;
-  --color-accent-deep: #6b2e6b;
-  --color-cta: #ff6b6b;
-  --color-cta-hover: #ff8585;
-  --color-gold: #d4af37;
+  --color-primary-bg: #080808;
+  --color-secondary-bg: #0f0f0f;
+  --color-card-bg: #141414;
+  --color-text-main: #f2f2f2;
+  --color-text-muted: #a3a3a3;
+  --color-accent: #d4a5d4;
+  --color-accent-deep: #8e448e;
+  --color-cta: #ff7878;
+  --color-cta-hover: #ff9595;
+  --color-gold: #e5c05d;
 
-  --font-display: 'Playfair Display', serif;
+  --font-display: 'Cormorant Garamond', serif;
   --font-body: 'Inter', sans-serif;
+  --font-cursive: 'Pinyon Script', cursive;
 
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
@@ -21,35 +22,36 @@
 }
 
 :root {
-  --primary-bg: #050505;
-  --secondary-bg: #0c0c0c;
-  --card-bg: #121212;
-  --text-main: #f8f8f8;
-  --text-muted: #9ca3af;
-  --accent: #bc77bc;
-  --accent-deep: #6b2e6b;
-  --cta: #ff6b6b;
-  --cta-hover: #ff8585;
-  --gold: #d4af37;
+  --primary-bg: #080808;
+  --secondary-bg: #0f0f0f;
+  --card-bg: #141414;
+  --text-main: #f2f2f2;
+  --text-muted: #a3a3a3;
+  --accent: #d4a5d4;
+  --accent-deep: #8e448e;
+  --cta: #ff7878;
+  --cta-hover: #ff9595;
+  --gold: #e5c05d;
 
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.06);
 
-  --font-display: 'Playfair Display', serif;
+  --font-display: 'Cormorant Garamond', serif;
   --font-body: 'Inter', sans-serif;
+  --font-cursive: 'Pinyon Script', cursive;
 
-  --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-smooth: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --container-padding: 0 6%;
-  --header-height: 80px;
+  --header-height: 90px;
 }
 
 [data-theme='light'] {
-  --primary-bg: #f8f8f8;
-  --secondary-bg: #f0f0f0;
+  --primary-bg: #fafafa;
+  --secondary-bg: #f4f4f4;
   --card-bg: #ffffff;
-  --text-main: #050505;
-  --text-muted: #6b7280;
-  --glass: rgba(0, 0, 0, 0.03);
+  --text-main: #1a1a1a;
+  --text-muted: #525252;
+  --glass: rgba(0, 0, 0, 0.04);
   --glass-border: rgba(0, 0, 0, 0.08);
 }
 
@@ -62,16 +64,17 @@
 
   html {
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 18px;
+    /* Slightly larger base font size for readability */
   }
 
   body {
     font-family: var(--font-body);
     background-color: var(--primary-bg);
     color: var(--text-main);
-    line-height: 1.7;
+    line-height: 1.8;
     overflow-x: hidden;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 0.6s ease, color 0.6s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -83,13 +86,18 @@
   h5,
   h6 {
     font-family: var(--font-display);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .font-cursive {
+    font-family: var(--font-cursive);
   }
 
   p {
-    line-height: 1.8;
+    line-height: 1.9;
+    font-weight: 300;
   }
 
   @media (pointer: fine) {
@@ -113,6 +121,11 @@
   section {
     padding: 100px 0;
     position: relative;
+  }
+
+  /* Fix for Toaster/Notifications section being too large due to general section rule */
+  section[aria-label^="Notifications"] {
+    padding: 0 !important;
   }
 
   @media (max-width: 768px) {
@@ -205,8 +218,8 @@
   }
 
   .section-title {
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    margin-bottom: 1.25rem;
     font-weight: 800;
   }
 

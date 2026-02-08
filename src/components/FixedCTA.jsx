@@ -1,45 +1,78 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar } from 'lucide-react';
+import { Calendar, MessageCircle } from 'lucide-react';
 
 const FixedCTA = () => {
-    const [isHovered, setIsHovered] = useState(false);
+    const [hoveredBtn, setHoveredBtn] = useState(null);
+
+    const buttons = [
+        {
+            id: 'whatsapp',
+            icon: <MessageCircle size={22} />,
+            href: 'https://wa.me/5532998079515',
+            label: 'WhatsApp',
+            color: 'from-[#25D366] to-[#128C7E]',
+            shadow: 'rgba(37, 211, 102, 0.4)'
+        },
+        {
+            id: 'agendamento',
+            icon: <Calendar size={22} />,
+            href: '#agendamento',
+            label: 'Orçamento',
+            color: 'from-accent-deep to-accent',
+            shadow: 'rgba(188, 119, 188, 0.4)'
+        }
+    ];
 
     return (
-        <motion.a
-            href="#agendamento"
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.8, type: 'spring' }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="fixed bottom-8 right-8 z-[150] flex items-center gap-3 group"
-            aria-label="Agendar Orçamento"
-        >
-            <AnimatePresence>
-                {isHovered && (
-                    <motion.span
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
-                        className="bg-white text-black text-[10px] font-bold tracking-widest px-4 py-2 rounded-full shadow-2xl uppercase hidden md:block"
-                    >
-                        Solicitar Orçamento
-                    </motion.span>
-                )}
-            </AnimatePresence>
+        <div className="fixed bottom-8 right-8 z-[150] flex flex-row-reverse gap-5 items-center">
+            {buttons.map((btn, idx) => (
+                <motion.a
+                    key={btn.id}
+                    href={btn.href}
+                    target={btn.id === 'whatsapp' ? "_blank" : undefined}
+                    rel={btn.id === 'whatsapp' ? "noopener noreferrer" : undefined}
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                        delay: 1.5 + (idx * 0.1),
+                        duration: 0.6,
+                        type: 'spring',
+                        stiffness: 100
+                    }}
+                    onMouseEnter={() => setHoveredBtn(btn.id)}
+                    onMouseLeave={() => setHoveredBtn(null)}
+                    className="flex flex-col items-center group relative cursor-none interactive"
+                    aria-label={btn.label}
+                >
+                    <AnimatePresence>
+                        {hoveredBtn === btn.id && (
+                            <motion.span
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: -20 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                className="absolute bottom-full mb-2 bg-white text-black text-[8px] font-bold tracking-[0.2em] px-3 py-1.5 rounded-full shadow-2xl uppercase whitespace-nowrap z-50 pointer-events-none"
+                            >
+                                {btn.label}
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
 
-            <div className="relative">
-                <motion.div
-                    animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.1, 0.3] }}
-                    transition={{ repeat: Infinity, duration: 3 }}
-                    className="absolute inset-[-10px] bg-accent rounded-full -z-10"
-                />
-                <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-tr from-accent-deep to-accent rounded-full flex items-center justify-center shadow-[0_15px_30px_rgba(188,119,188,0.4)] border border-white/20 relative z-10 transition-transform duration-500 group-hover:scale-110">
-                    <Calendar size={24} className="text-white" />
-                </div>
-            </div>
-        </motion.a>
+                    <div className="relative">
+                        <motion.div
+                            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.1, 0.3] }}
+                            transition={{ repeat: Infinity, duration: 3 }}
+                            className={`absolute inset-[-6px] bg-gradient-to-tr ${btn.color} rounded-full -z-10 blur-[4px]`}
+                        />
+                        <div className={`w-12 h-12 bg-gradient-to-tr ${btn.color} rounded-full flex items-center justify-center shadow-[0_10px_20px_${btn.shadow}] border border-white/20 relative z-10 transition-transform duration-500 group-hover:scale-110`}>
+                            <div className="text-white">
+                                {btn.icon}
+                            </div>
+                        </div>
+                    </div>
+                </motion.a>
+            ))}
+        </div>
     );
 };
 

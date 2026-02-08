@@ -76,9 +76,10 @@ const SchedulingForm = () => {
             <div className="container relative z-10">
                 <div className="scheduling-grid">
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
+                        initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
                     >
                         <span className="section-subtitle">Orçamento</span>
                         <h2 className="section-title scheduling-info-title">Agende sua Tattoo</h2>
@@ -87,17 +88,18 @@ const SchedulingForm = () => {
                         </p>
 
                         <div className="scheduling-steps">
-                            <Step number="01" title="Briefing" text="Explique o que deseja tatuar e o local do corpo." />
-                            <Step number="02" title="Análise" text="Vou analisar seu pedido e enviar o valor estimado." />
-                            <Step number="03" title="Reserva" text="Escolhemos a data e garantimos seu horário." />
+                            <Step number="01" title="Briefing" text="Explique o que deseja tatuar e o local do corpo." delay={0.2} />
+                            <Step number="02" title="Análise" text="Vou analisar seu pedido e enviar o valor estimado." delay={0.4} />
+                            <Step number="03" title="Reserva" text="Escolhemos a data e garantimos seu horário." delay={0.6} />
                         </div>
                     </motion.div>
 
                     <motion.form
                         onSubmit={handleSubmit(onSubmit)}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
                         className="scheduling-form"
                     >
                         <div className="form-row">
@@ -207,8 +209,14 @@ const SchedulingForm = () => {
     );
 };
 
-const Step = ({ number, title, text }) => (
-    <div className="step-item">
+const Step = ({ number, title, text, delay }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay, duration: 0.5 }}
+        className="step-item"
+    >
         <div className="step-number">
             <span>{number}</span>
         </div>
@@ -216,7 +224,7 @@ const Step = ({ number, title, text }) => (
             <h4>{title}</h4>
             <p>{text}</p>
         </div>
-    </div>
+    </motion.div>
 );
 
 export default SchedulingForm;

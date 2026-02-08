@@ -16,7 +16,7 @@ import FixedCTA from './components/FixedCTA';
 function App() {
   return (
     <div className="app-container">
-      <Toaster position="top-center" richColors />
+      <Toaster position="top-center" richColors theme="dark" />
       <CustomCursor />
       <Navbar />
 

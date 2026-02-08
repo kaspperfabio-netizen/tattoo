@@ -58,13 +58,18 @@ const Flashs = () => {
     return (
         <section id="flashs" className="bg-secondary-bg overflow-hidden">
             <div className="container">
-                <div className="section-header">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="section-header"
+                >
                     <span className="section-subtitle">Exclusivos</span>
                     <h2 className="section-title">Flashs Disponíveis</h2>
                     <p className="max-w-xl mx-auto text-text-muted text-lg font-light leading-relaxed">
                         Designs autorais prontos para serem tatuados. Projetos únicos que não se repetem.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                     {flashs.map((flash, idx) => (
@@ -79,20 +84,19 @@ const Flashs = () => {
                         >
                             <div className="aspect-[4/5] bg-neutral-900 relative overflow-hidden">
                                 <img
-                                        src={flash.src}
-                                        alt={flash.title}
-                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
-                                    />
+                                    src={flash.src}
+                                    alt={flash.title}
+                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
+                                />
 
-                                    <div className={cn(
-                                        "absolute top-6 left-6 text-[9px] px-4 py-1.5 rounded-full uppercase tracking-widest font-bold backdrop-blur-xl border border-white/10 shadow-xl z-20",
-                                        flash.available ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'
-                                    )}>
-                                        {flash.available ? 'Disponível' : 'Indisponível'}
-                                    </div>
-
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className={cn(
+                                    "absolute top-6 left-6 text-[9px] px-4 py-1.5 rounded-full uppercase tracking-widest font-bold backdrop-blur-xl border border-white/10 shadow-xl z-20",
+                                    flash.available ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'
+                                )}>
+                                    {flash.available ? 'Disponível' : 'Indisponível'}
                                 </div>
+
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
 
                             <div className="p-8">
@@ -115,24 +119,24 @@ const Flashs = () => {
                             </div>
                         </motion.div>
                     ))}
-            </div>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="mt-20 text-center"
-            >
-                <div className="inline-flex flex-col md:flex-row items-center gap-6 glass p-8 md:p-10 rounded-[2.5rem] border-accent/10">
-                    <div className="text-left">
-                        <h4 className="text-xl font-display mb-2">Quer uma arte personalizada?</h4>
-                        <p className="text-sm text-text-muted font-light">Desenvolvo projetos exclusivos baseados na sua história.</p>
-                    </div>
-                    <a href="#agendamento" className="btn btn-primary px-8 flex items-center gap-3">
-                        Criar meu projeto <Sparkles size={18} />
-                    </a>
                 </div>
-            </motion.div>
-        </div>
+
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="mt-20 text-center"
+                >
+                    <div className="inline-flex flex-col md:flex-row items-center gap-6 glass p-8 md:p-10 rounded-[2.5rem] border-accent/10">
+                        <div className="text-left">
+                            <h4 className="text-xl font-display mb-2">Quer uma arte personalizada?</h4>
+                            <p className="text-sm text-text-muted font-light">Desenvolvo projetos exclusivos baseados na sua história.</p>
+                        </div>
+                        <a href="#agendamento" className="btn btn-primary px-8 flex items-center gap-3">
+                            Criar meu projeto <Sparkles size={18} />
+                        </a>
+                    </div>
+                </motion.div>
+            </div>
         </section >
     );
 };

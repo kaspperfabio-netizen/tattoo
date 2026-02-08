@@ -20,18 +20,26 @@ const InstagramFeed = () => {
         <section id="instagramfeed" className="bg-primary-bg overflow-hidden border-t border-accent/10">
             <div className="container">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-                    <div className="text-left">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="text-left"
+                    >
                         <span className="section-subtitle">No Instagram</span>
                         <h2 className="section-title text-left mb-0 leading-[0.8] mt-4">@vtori.ink</h2>
-                    </div>
-                    <a
+                    </motion.div>
+                    <motion.a
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         href="https://instagram.com/vtori.ink"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary gap-3 shadow-[0_0_20px_rgba(188,119,188,0.3)]"
                     >
                         Seguir Perfil <Instagram size={20} />
-                    </a>
+                    </motion.a>
                 </div>
             </div>
 

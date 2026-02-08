@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Play, ZoomIn } from 'lucide-react';
 import Lightbox from './common/Lightbox';
 
 const Portfolio = () => {
     const [filter, setFilter] = useState('Todos');
     const [selectedIdx, setSelectedIdx] = useState(-1);
+    const sectionRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    const yBackground = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+    const yItems = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
     const categories = ['Todos', 'Fineline', 'Blackwork', 'Geek'];
 
@@ -85,16 +94,37 @@ const Portfolio = () => {
     };
 
     return (
-        <section id="portfolio" className="bg-primary-bg">
-            <div className="container">
-                <div className="section-header">
+        <section id="portfolio" ref={sectionRef} className="bg-primary-bg relative overflow-hidden">
+            {/* Background Decorative Parallax */}
+            <motion.div
+                style={{ y: yBackground }}
+                className="absolute right-[-10%] top-1/4 w-[40%] h-[40%] rounded-full bg-accent/5 blur-[120px] pointer-events-none"
+            />
+            <motion.div
+                style={{ y: yBackground }}
+                className="absolute left-[-10%] bottom-1/4 w-[30%] h-[30%] rounded-full bg-cta/5 blur-[100px] pointer-events-none"
+            />
+
+            <div className="container relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="section-header"
+                >
                     <span className="section-subtitle">Galeria Curada</span>
                     <h2 className="section-title">Portfólio</h2>
-                </div>
+                </motion.div>
 
                 {/* Filters */}
-                <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-16">
-                    {categories.map(cat => (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="flex flex-wrap justify-center gap-4 md:gap-6 mb-16"
+                >
+                    {categories.map((cat, idx) => (
                         <button
                             key={cat}
                             onClick={() => setFilter(cat)}
@@ -106,10 +136,14 @@ const Portfolio = () => {
                             {cat}
                         </button>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Grid */}
-                <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <motion.div
+                    layout
+                    style={{ y: yItems }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                >
                     <AnimatePresence mode='popLayout'>
                         {filteredItems.map((item, idx) => (
                             <motion.div
