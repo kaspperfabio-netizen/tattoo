@@ -52,6 +52,8 @@ O projeto consiste em uma landing page responsiva built com React 19 e Vite, foc
 
 ## 12. Requisitos de Documentação
 - Manter o `README.md` (versões completa e resumida) atualizado.
+- Gerenciar o estado do projeto e dívidas técnicas no `MEMORY.md`.
+- Consultar e atualizar a lógica de negócios no `BUSINESS_RULES.md`.
 - Documentar especificações de API e versões de bibliotecas.
 - Comentar blocos de lógica complexa seguindo os padrões do projeto.
 

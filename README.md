@@ -1,58 +1,65 @@
 # vtori.ink — Landing Page Vitória Lima
 
-Uma landing page premium desenvolvida para a artista tatuadora Vitória Lima, especializada em Fineline, Blackwork e temática Geek. O projeto prioriza a estética visual, performance e uma experiência de usuário imersiva.
+[![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.0-purple.svg)](https://vitejs.dev/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-11-black.svg)](https://www.framer.com/motion/)
 
-## 🚀 Tecnologias
-- **React 19**: Biblioteca core para a interface.
-- **Vite**: Build tool ultra-rápida.
-- **Framer Motion**: Animações fluidas e interações premium.
-- **Lucide React**: Kit de ícones vetoriais.
-- **Vanilla CSS**: Estilização purista focada em performance e controle.
-
-## 🎨 Design e Estética
-- **Paleta Dark**: Fundo preto profundo (`#0B0B0B`), detalhes em Berinjela (`#6B2E6B`) e CTAs em Coral (`#FF6B6B`).
-- **Tipografia**: 
-  - *Títulos*: Playfair Display (Elegância e Sofisticação).
-  - *Corpo*: Inter (Legibilidade e Modernidade).
-- **Interações**:
-  - Cursor personalizado em forma de agulha de tatuagem.
-  - Efeito parallax suave em seções de destaque.
-  - Barra de rolagem estilizada.
-  - Micro-animações em botões e cards.
-
-## 🧩 Estrutura de Componentes
-- `Navbar`: Navegação fixa com scroll suave.
-- `Hero`: Seção de impacto com animação de entrada.
-- `About`: Biografia e selo de localização.
-- `Portfolio`: Galeria filtrável por estilos com lightbox.
-- `InstagramFeed`: Slider integrado com as últimas postagens.
-- `SchedulingForm`: Formulário dinâmico com upload de referências.
-- `Flashs`: Projetos autorais disponíveis para tatuagem imediata.
-- `FixedCTA`: Botão flutuante para agendamento rápido.
-
-## 🛠️ Configuração e Execução
-1. Instale as dependências: `npm install`
-2. Execute em ambiente de desenvolvimento: `npm run dev`
-3. Gere o build de produção: `npm run build`
-4. Verifique o linting: `npm run lint`
-
-## 📏 Padrões de Desenvolvimento
-- Arquivos limitados a 200-300 linhas.
-- Estilos isolados por componente.
-- Lógica de negócios em hooks customizados.
-- SEMPRE utilize o `task-master-ai` para gerenciar novas tarefas.
-
-## 📁 Organização do Projeto
-```text
-/src
-  /assets      # Imagens e SVGs estáticos
-  /components  # Componentes modulares da interface
-  /context     # Provedores de estado global (Tema, etc.)
-  /hooks       # Lógica compartilhada
-  /styles      # Arquivos CSS globais e utilitários
-  App.jsx      # Componente raiz
-  main.jsx     # Ponto de entrada
-```
+Uma landing page **premium** e **imersiva** desenvolvida para a artista tatuadora **Vitória Lima**, especializada em *Fineline*, *Blackwork* e temática *Geek*. O projeto é focado em alta conversão através de uma estética sofisticada e performance técnica impecável.
 
 ---
-© 2026 vtori.ink — Vitória Lima. Desenvolvido com foco em excelência artística.
+
+## 📚 Documentação do Projeto
+Para uma compreensão profunda do projeto, consulte nossos documentos detalhados:
+
+- 🧠 **[MEMORY.md](./MEMORY.md)**: Contexto histórico, decisões arquiteturais e estado atual do desenvolvimento.
+- 📐 **[GUIDELINES.md](./GUIDELINES.md)**: Padrões de código, diretrizes de UI e regras para agentes de IA.
+- ⚖️ **[BUSINESS_RULES.md](./BUSINESS_RULES.md)**: Regras de negócio, fluxo de agendamento e objetivos estratégicos.
+
+---
+
+## 🎨 Design e Estética
+| Elemento | Especificação |
+| :--- | :--- |
+| **Paleta Base** | Preto Profundo (`#0B0B0B`) |
+| **Acentos** | Berinjela (`#6B2E6B`) & Coral (`#FF6B6B`) |
+| **Tipografia** | *Playfair Display* (Display) & *Inter* (Sans) |
+| **Interações** | Cursor customizado, Parallax, Smooth Scroll, Micro-animações |
+
+---
+
+## 🧩 Funcionalidades Core
+- **Portfólio Dinâmico**: Galeria filtrável por estilos com visualização em Lightbox.
+- **Agendamento Inteligente**: Formulário com upload de referências e lógica de pré-qualificação.
+- **Instagram Imersivo**: Feed integrado via slider com interação direta.
+- **Flash Gallery**: Catálogo de desenhos autorais prontos para tatuagem.
+
+---
+
+## 🛠️ Stack Técnica
+- **Core**: React 19 + Vite.
+- **Estilização**: Vanilla CSS (CSS Variables + Component-scoped CSS).
+- **Animações**: Framer Motion para orquestração de entrada e scroll.
+- **Ícones**: Lucide React.
+- **Feedback**: Sonner (Toasts).
+
+---
+
+## 🚀 Como Iniciar
+1. **Clone e Instale**:
+   ```bash
+   git clone <link-do-repo>
+   cd tattoo
+   npm install
+   ```
+2. **Desenvolvimento**:
+   ```bash
+   npm run dev
+   ```
+3. **Produção**:
+   ```bash
+   npm run build
+   ```
+
+---
+© 2026 **vtori.ink** — Vitória Lima. *Arte narrada na pele com excelência e precisão.*
+
