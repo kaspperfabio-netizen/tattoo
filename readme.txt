@@ -25,3 +25,4 @@ Modo Escuro e Claro
 Modo escuro como padrão com fundo #0B0B0B; Toggle para alternar para modo claro com fundo #E7E5E5; Transição suave entre temas; Persistência da preferência do usuário; Ajuste automático de contraste de textos e elementos
 Acessibilidade e Performance
 Contraste mínimo WCAG AA em todos os textos; Alt text descritivo em todas as imagens; Labels e aria-attributes em formulários; Foco visível em elementos interativos; Navegação por teclado funcional; Lazy-load de imagens com WebP/AVIF; Otimização de LCP e CLS para Lighthouse score > 90
+fg
