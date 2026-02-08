@@ -99,16 +99,6 @@
     line-height: 1.9;
     font-weight: 300;
   }
-
-  @media (pointer: fine) {
-
-    body,
-    a,
-    button,
-    .interactive {
-      cursor: none !important;
-    }
-  }
 }
 
 @layer components {

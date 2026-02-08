@@ -17,7 +17,6 @@ function App() {
   return (
     <div className="app-container">
       <Toaster position="top-center" richColors theme="dark" />
-      <CustomCursor />
       <Navbar />
 
       <main>
