@@ -30,7 +30,12 @@ Este documento consolida as regras de negócio e objetivos estratégicos da land
 - **Contexto**: Exibir título e categoria em cada arte.
 - **CTA**: Possibilidade de iniciar agendamento diretamente a partir de um projeto visualizado.
 
-## 5. Feed Social (Instagram)
+## 5. Expertise Técnica (Especialidades)
+- **Definições**: Explicar claramente os estilos *Fineline*, *Blackwork* e *Geek* para educar o cliente.
+- **Interatividade**: Facilitar a navegação desde o Hero para as explicações técnicas.
+- **Visual**: Usar ícones e ilustrações que remetam à técnica (ex: agulha para Fineline, contraste para Blackwork).
+
+## 6. Feed Social (Instagram)
 - **Sincronização**: Exibir as postagens mais recentes de @vtori.ink.
 - **Navegação**: O feed deve ser interativo, permitindo ver detalhes dos posts sem sair da página.
 - **Engajamento**: Links diretos para o Instagram para aumentar o número de seguidores.

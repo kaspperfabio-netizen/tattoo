@@ -46,7 +46,7 @@ export const useSchedulingForm = () => {
                     referencia: null
                 });
             }, 5000);
-        } catch (error) {
+        } catch {
             setFormState('error');
         }
     };

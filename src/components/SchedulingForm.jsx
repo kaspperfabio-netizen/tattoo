@@ -38,7 +38,7 @@ const SchedulingForm = () => {
             setIsSuccess(true);
             toast.success('Solicitação enviada com sucesso! Responderei em breve.');
             reset();
-        } catch (error) {
+        } catch {
             toast.error('Ocorreu um erro ao enviar. Tente novamente.');
         } finally {
             setIsSubmitting(false);
@@ -172,6 +172,7 @@ const SchedulingForm = () => {
                                     {file?.[0] ? file[0].name : 'Clique para selecionar arquivos'}
                                 </span>
                             </Label.Root>
+                            {errors.referencia && <span className="text-[10px] text-red-400 mt-2 block uppercase tracking-widest">{errors.referencia.message}</span>}
                         </div>
 
                         <div className="flex flex-col gap-4 mt-8">

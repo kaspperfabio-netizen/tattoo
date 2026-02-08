@@ -12,7 +12,7 @@
   --color-cta-hover: #ff9595;
   --color-gold: #e5c05d;
 
-  --font-display: 'Cormorant Garamond', serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-cursive: 'Pinyon Script', cursive;
 
@@ -36,7 +36,7 @@
   --glass: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.06);
 
-  --font-display: 'Cormorant Garamond', serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-cursive: 'Pinyon Script', cursive;
 
@@ -221,6 +221,48 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .instagram-scroll {
+    --instagram-card-gap: 1.5rem;
+    --instagram-card-count: 5;
+    cursor: grab;
+    user-select: none;
+    scroll-behavior: smooth;
+  }
+
+  .instagram-scroll.is-dragging {
+    cursor: grabbing;
+  }
+
+  .instagram-card {
+    flex: 0 0 calc((100% - (var(--instagram-card-count) - 1) * var(--instagram-card-gap)) / var(--instagram-card-count));
+    max-width: calc((100% - (var(--instagram-card-count) - 1) * var(--instagram-card-gap)) / var(--instagram-card-count));
+    min-width: 200px;
+  }
+
+  @media (max-width: 1200px) {
+    .instagram-scroll {
+      --instagram-card-count: 4;
+    }
+  }
+
+  @media (max-width: 960px) {
+    .instagram-scroll {
+      --instagram-card-count: 3;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .instagram-scroll {
+      --instagram-card-count: 2;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .instagram-scroll {
+      --instagram-card-count: 1.4;
+    }
   }
 
   .grid {

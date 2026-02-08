@@ -90,7 +90,7 @@ const About = () => {
                                 href="https://wa.me/5532998079515"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-outline border-white/10 hover:bg-neutral-800 gap-3 px-8"
+                                className="btn btn-outline border-white/10 hover:bg-emerald-500 hover:border-emerald-400 hover:text-primary-bg gap-3 px-8"
                             >
                                 <MessageCircle size={18} />
                                 Iniciar Conversa

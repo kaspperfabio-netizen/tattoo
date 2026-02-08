@@ -24,9 +24,9 @@ Este arquivo serve como a camada de memória e contexto para os agentes de IA qu
 | :--- | :--- | :--- | :--- |
 | `SchedulingForm` | ✅ Vanilla | OK | Já refatorado com hook `useSchedulingForm`. |
 | `Portfolio` | ❌ Tailwind | OK (208 lines) | Precisa migrar classes para `Portfolio.css`. |
-| `Hero` | ❌ Tailwind | OK (127 lines) | Precisa migrar classes para `Hero.css`. |
+| `Hero` | ✅ Vanilla | OK (127 lines) | Já refatorado e isolado em `Hero.css`. |
 | `About` | ❌ Tailwind | - | Pendente análise detalhada. |
-| `Navbar` | ❌ Tailwind | - | Pendente análise detalhada. |
+| `Specialties` | ✅ Vanilla | OK | Nova seção de expertise técnica. |
 
 ## Estado Atual do Refactoring
 - [x] Criação de `GUIDELINES.md`.

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Instagram, Play, ExternalLink } from 'lucide-react';
 
@@ -15,6 +15,43 @@ const InstagramFeed = () => {
         { id: 8, type: 'image', src: '/assets/instagram/post6_mewtwo.webp' },
         { id: 9, type: 'image', src: '/assets/instagram/post8_kakashi.webp' },
     ];
+
+    const scrollRef = useRef(null);
+    const isDraggingRef = useRef(false);
+    const dragStartXRef = useRef(0);
+    const dragStartScrollRef = useRef(0);
+
+    const handlePointerDown = (event) => {
+        const container = scrollRef.current;
+        if (!container || event.button !== 0) return;
+
+        isDraggingRef.current = true;
+        dragStartXRef.current = event.clientX;
+        dragStartScrollRef.current = container.scrollLeft;
+        container.classList.add('is-dragging');
+        container.setPointerCapture(event.pointerId);
+    };
+
+    const handlePointerMove = (event) => {
+        const container = scrollRef.current;
+        if (!container || !isDraggingRef.current) return;
+
+        const delta = event.clientX - dragStartXRef.current;
+        container.scrollLeft = dragStartScrollRef.current - delta;
+    };
+
+    const handlePointerUp = (event) => {
+        const container = scrollRef.current;
+        if (!container) return;
+
+        isDraggingRef.current = false;
+        container.classList.remove('is-dragging');
+        try {
+            container.releasePointerCapture(event.pointerId);
+        } catch (error) {
+            // Ignore if pointer capture was already released.
+        }
+    };
 
     return (
         <section id="instagramfeed" className="bg-primary-bg overflow-hidden border-t border-accent/10">
@@ -44,17 +81,26 @@ const InstagramFeed = () => {
             </div>
 
             {/* Scrolling Feed */}
-            <div className="flex gap-6 px-10 overflow-x-auto pb-12 no-scrollbar">
+            <div
+                ref={scrollRef}
+                className="instagram-scroll flex gap-6 px-10 overflow-x-auto pb-12 no-scrollbar"
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerLeave={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+            >
                 {posts.concat(posts).map((post, idx) => (
                     <motion.div
                         key={`${post.id}-${idx}`}
                         whileHover={{ y: -8, scale: 1.02 }}
                         transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                        className="flex-shrink-0 w-72 md:w-96 aspect-square rounded-2xl relative group overflow-hidden cursor-none interactive glass"
+                        className="instagram-card flex-shrink-0 aspect-square rounded-2xl relative group overflow-hidden cursor-none interactive glass"
                     >
                         <img
                             src={post.src}
                             alt="Instagram Post"
+                            draggable={false}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
 

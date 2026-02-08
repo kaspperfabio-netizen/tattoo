@@ -1,0 +1,28 @@
+/* Glossy Effect */
+.portfolio-card {
+    --mouse-x: -50%;
+    --mouse-y: -50%;
+}
+
+.portfolio-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.1),
+            transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.portfolio-card:hover::after {
+    opacity: 1;
+}
+
+/* Enhancing the badge for visibility under gloss */
+.portfolio-badge {
+    z-index: 10;
+}

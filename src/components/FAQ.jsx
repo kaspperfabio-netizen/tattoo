@@ -2,7 +2,6 @@ import React from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { cn } from '../lib/utils';
 
 const FAQ = () => {
     const faqs = [

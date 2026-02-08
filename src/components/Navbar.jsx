@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Instagram } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { Menu, X, Instagram } from 'lucide-react';
+import '../styles/Glitch.css';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -46,8 +45,8 @@ const Navbar = () => {
                             whileHover={{ scale: 1.02 }}
                             aria-label="Vtori Link Home"
                         >
-                            <span className="font-display font-medium text-xl md:text-2xl tracking-tight text-white group-hover:text-accent transition-colors duration-300">vtori</span>
-                            <span className="font-cursive text-accent text-3xl md:text-4xl ml-1 relative top-1 group-hover:text-white transition-colors duration-300">.ink</span>
+                            <span className="font-display font-medium text-xl md:text-2xl tracking-tight text-white group-hover:text-accent transition-colors duration-300 glitch-hover" data-text="vtori">vtori</span>
+                            <span className="font-cursive text-accent text-3xl md:text-4xl ml-1 relative top-1 group-hover:text-white transition-colors duration-300 glitch-hover" data-text=".ink">.ink</span>
                         </motion.a>
 
                         {/* Desktop Navigation */}
@@ -79,15 +78,6 @@ const Navbar = () => {
                             >
                                 <Instagram size={14} />
                             </motion.a>
-
-                            <motion.button
-                                onClick={toggleTheme}
-                                className="hidden md:flex items-center justify-center w-8 h-8 rounded-full border border-white/10 hover:border-accent/40 bg-white/5 hover:bg-accent/10 transition-all text-white/70 hover:text-accent"
-                                whileHover={{ scale: 1.05, rotate: 180 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
-                            </motion.button>
 
                             <a
                                 href="#agendamento"
@@ -184,7 +174,7 @@ const Navbar = () => {
                             </motion.a>
 
                             <div className="flex justify-between items-center border-t border-white/10 pt-6">
-                                <span className="text-[10px] uppercase tracking-widest text-text-muted">Social & Theme</span>
+                                <span className="text-[10px] uppercase tracking-widest text-text-muted">Social</span>
                                 <div className="flex gap-4">
                                     <a
                                         href="https://instagram.com/vtori.ink"
@@ -194,12 +184,6 @@ const Navbar = () => {
                                     >
                                         <Instagram size={18} />
                                     </a>
-                                    <button
-                                        onClick={toggleTheme}
-                                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white/60 hover:text-accent hover:border-accent/40 bg-white/5 transition-all"
-                                    >
-                                        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                                    </button>
                                 </div>
                             </div>
                         </div>
