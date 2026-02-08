@@ -1,0 +1,29 @@
+# PRD - Landing Page Vitória Lima (vtori.ink)
+
+## Visão Geral
+Criação de uma landing page moderna, minimalista e sofisticada para a tatuadora Vitória Lima. O foco é exibir o portfólio (Fineline, Blackwork, Geek) e facilitar o agendamento de orçamentos.
+
+## Requisitos Funcionais
+1.  **Hero Section**: Título, subtítulo, animação de agulha e CTAs.
+2.  **Sobre**: Biografia, especialidades e localização.
+3.  **Portfólio**: Grid filtrável com lightbox/modal acessível.
+4.  **Instagram**: Slider de posts com visualização ampliada.
+5.  **Agendamento**: Formulário com upload de referências e integração WhatsApp.
+6.  **Flashs**: Galeria de projetos disponíveis.
+7.  **Depoimentos**: Slider de reviews de clientes.
+8.  **Cursor Personalizado**: Agulha de tatuagem SVG.
+9.  **Tema**: Dark mode padrão com toggle para light mode.
+
+## Requisitos Técnicos
+- **Framework**: React 19 + Vite.
+- **Styling**: Vanilla CSS (Isolado em arquivos por componente).
+- **Animações**: Framer Motion.
+- **Icons**: Lucide React.
+- **Qualidade**: SOLID, Clean Code, DRY.
+- **Arquitetura**: Componentes modulares, hooks para lógica, separação de estilos.
+- **Limites**: Máximo de 200-300 linhas por arquivo.
+- **Ambiente**: Proteção de .env, mocks apenas em testes.
+
+## Definições de Design
+- **Cores**: Preto (#0B0B0B), Berinjela (#6B2E6B), Coral (#FF6B6B), Dourado (#D4AF37).
+- **Tipografia**: Playfair Display (Títulos), Inter (Corpo).

@@ -1,0 +1,187 @@
+### Resumo da página (perfil Instagram)
+**Resumo curto:** Perfil da tatuadora **Vitória Lima (vtori.ink)** — artista baseada em **Juiz de Fora, MG**, com foco em **fineline**, **blackwork** e trabalhos com temática **geek**. O perfil indica **orçamentos via link** e contato por **WhatsApp**. 
+
+**Pontos principais**
+- **Nome / Marca:** vtori.ink — Vitória Lima.   
+- **Localização:** JF - MG.   
+- **Estilos destacados:** Fineline; Blackwork; Geek.   
+- **Chamada para ação:** Orçamentos pelo link no perfil; contato via WhatsApp (número indicado no perfil). 
+
+**Observação sobre imagens e vídeos**
+- O conteúdo textual do perfil foi recuperado, mas **as imagens e vídeos em si não foram extraídos** pelo resumo automático. Posso inferir que o portfólio visual provavelmente contém peças fineline e blackwork (pelas tags), mas **não posso descrever imagens ou frames específicos sem os arquivos**. Se você quiser uma análise visual detalhada, envie as imagens ou permita acesso direto ao conteúdo. 
+
+---
+
+### Análise orientada ao design (insights úteis)
+- **Tom visual sugerido:** minimalista e sofisticado com toques sombrios — preto, cinzas quentes e acentos em roxo/berinjela para remeter ao tom “alternativo” e ao uso do coração/paleta do perfil.  
+- **Tipografia:** combinar uma fonte serifada estilizada para títulos (elegância artística) com uma sans moderna para corpo e CTAs (legibilidade).  
+- **Hierarquia de conteúdo:** destaque para portfólio (galeria), estilos (explicação curta com exemplos), agendamento (CTA direto), depoimentos e feed do Instagram em slides.  
+- **Interatividade:** hover suave com zoom em posts/vídeos; clique abre modal com visualização ampliada e navegação entre posts; microinterações (botões arredondados, transições eased).  
+- **Acessibilidade:** contraste suficiente, textos alternativos para imagens, foco por teclado nos modais e controles do slider.
+
+---
+
+### Prompt personalizado (para criação da landing page em React moderno)
+Use este **prompt** como briefing para um desenvolvedor/designer ou para alimentar uma ferramenta de geração de layout/HTML/CSS/React:
+
+**Prompt (Português, detalhado):**
+
+> **Crie uma landing page moderna em React (v18+) para a artista tatuadora Vitória Lima (marca: vtori.ink).** A página deve ser responsiva (mobile-first) e conter as seções: **Hero, Sobre a artista, Estilos e Portfólio, Agendamento, Feed Instagram (slider), Depoimentos e Contato**. Implementação técnica: **React functional components + hooks, CSS-in-JS (styled-components / emotion) ou Tailwind com classes utilitárias**, animações suaves com **Framer Motion** ou CSS transitions, e modal acessível para visualização de posts.  
+>  
+> **Requisitos visuais e UX:**  
+> - **Estética:** moderna, minimalista com personalidade alternativa; paleta baseada em preto/graphite, cinzas quentes e acentos em roxo/berinjela; usar tons neutros para destacar as tatuagens.  
+> - **Tipografia:** títulos com fonte estilizada e artística (ex.: serif display ou script refinado); textos e CTAs com sans moderna e legível.  
+> - **Cursor personalizado:** substituir cursor padrão por um ponteiro em forma de **agulha de tatuador** (SVG) com animação sutil ao pairar sobre elementos clicáveis.  
+> - **Scroll e parallax:** seções com **backgrounds em imagem** (texturas de pele, estúdio, ou close-ups artísticos) e efeito de parallax suave ao rolar; transições entre seções com fade/slide.  
+> - **Barra de rolagem personalizada:** estilo fino, cor de destaque nos acentos; thumb arredondado.  
+> - **Botões:** cantos arredondados suaves, sombra leve, microinteração de pressão (scale 0.98) e transição eased.  
+>  
+> **Seção Portfólio / Estilos:**  
+> - Cards para **Fineline, Blackwork, Geek** com breve descrição, exemplos (imagens) e botão “Ver projetos”.  
+> - Cada card usa background com textura relacionada ao estilo (ex.: linhas finas, alto contraste, elementos geek sutis).  
+>  
+> **Seção Feed Instagram (slider):**  
+> - Integre um slider/carrossel que puxe as últimas postagens (imagens e vídeos) via API ou dataset fornecido.  
+> - Exibir grid responsivo de miniaturas; ao **hover** aplicar **efeito suave de zoom (scale 1.05)** e leve overlay com ícone de play para vídeos.  
+> - Ao **clicar** em qualquer post, abrir **modal** centralizado com conteúdo ampliado (imagem ou vídeo), legenda, data e botões para navegar para o post anterior/próximo. Modal deve ser **acessível** (fechar com ESC, foco gerenciado).  
+> - Hover e transições com easing suave; pré-carregamento de imagens para evitar flicker.  
+>  
+> **Agendamento:**  
+> - Formulário simples com campos: nome, e-mail, telefone, estilo desejado (select), descrição do projeto, upload de referência (opcional) e calendário integrado (ou link direto para agendamento via WhatsApp/Calendly).  
+> - CTA fixo no canto inferior direito em telas grandes: “Agendar / Orçamento” com cor de destaque.  
+>  
+> **Detalhes técnicos e performance:**  
+> - Lazy-load de imagens e vídeos; usar formatos modernos (WebP/AVIF) quando possível.  
+> - Implementar SEO básico (meta tags, Open Graph com imagem de destaque).  
+> - Testes de performance: Lighthouse score otimizado (priorizar LCP e CLS).  
+>  
+> **Microcopy e conteúdo:**  
+> - Hero com frase curta e autoral (ex.: “Vitória Lima — Fineline & Blackwork | JF, MG”) e CTA “Ver Portfólio” e “Pedir Orçamento”.   
+> - Incluir seção “Sobre” com biografia curta, especialidades e link para contato via WhatsApp (usar número do perfil).   
+>  
+> **Extras criativos:**  
+> - Animação discreta de “agulha” desenhando uma linha no carregamento do site.  
+> - Modo escuro por padrão com opção de alternar para versão mais clara.  
+> - Seção de “Flashs autorais / Projetos disponíveis” com cards destacando disponibilidade imediata.  
+>  
+> **Entregáveis esperados:**** repositório React com componentes reutilizáveis, estilos, instruções de build (npm/yarn), e documentação curta explicando como alimentar o slider do Instagram (API ou JSON).  
+>  
+> **Observação:** o design deve respeitar a identidade visual do perfil (vtori.ink) e priorizar a exibição das tatuagens com contraste e foco nas linhas e texturas.
+
+---
+
+
+---
+
+### Brief Visual e Funcional — Landing Page vtori.ink
+
+#### Visão geral
+Landing page com estética **moderna, minimalista e alternativa**, que prioriza a exibição das tatuagens. Experiência imersiva com microinterações, cursor temático e integração direta com agendamento e Instagram.
+
+#### Público alvo
+Pessoas interessadas em tatuagens fineline, blackwork e temáticas geek; clientes locais de Juiz de Fora e região; seguidores do Instagram buscando portfólio e agendamento.
+
+---
+
+#### Paleta de cores
+- **Primária**: Preto profundo `#0B0B0B`  
+- **Neutros**: Cinza quente `#2E2E2E`; Cinza claro `#E7E5E5`  
+- **Acento**: Berinjela / Roxo escuro `#6B2E6B`  
+- **Destaque CTA**: Coral suave `#FF6B6B` ou dourado discreto `#D4AF37` (usar 1 opção conforme identidade)
+
+#### Tipografia
+- **Títulos**: Display estilizado (serif display ou script refinado) — ex.: Playfair Display, Abril Fatface, ou uma script customizada.  
+- **Corpo e CTAs**: Sans moderna — ex.: Inter, Poppins ou Montserrat.  
+- **Monoespaço** para microcopy técnico ou tags (opcional).
+
+#### Layout e seções
+1. **Hero**  
+   - Fundo com imagem de estúdio texturizada em parallax.  
+   - Título grande estilizado; subtítulo curto; CTAs: “Ver Portfólio” e “Pedir Orçamento”.  
+   - Animação de entrada: agulha desenhando uma linha sutil ao carregar.
+
+2. **Sobre a artista**  
+   - Foto editorial + biografia curta; especialidades; selo “JF MG”.  
+   - Tipografia elegante para destacar assinatura.
+
+3. **Estilos**  
+   - Três cards: **Fineline**, **Blackwork**, **Geek**.  
+   - Cada card com textura de fundo relacionada e CTA “Ver projetos”.  
+   - Microinteração: elevação suave e border glow no hover.
+
+4. **Portfólio**  
+   - Grid responsivo de imagens; filtros por estilo.  
+   - Lightbox/modal acessível com navegação anterior/próximo, legenda e botão para agendar.
+
+5. **Feed Instagram Slider**  
+   - Grid de miniaturas com lazy-load.  
+   - **Hover**: efeito suave de zoom `scale(1.05)` e overlay translúcido; ícone play para vídeos.  
+   - **Clique**: abre modal central com imagem/vídeo, legenda, data e link externo.  
+   - Navegação por teclado e ESC para fechar.
+
+6. **Agendamento**  
+   - Formulário simples + opção de upload de referência.  
+   - Integração com Calendly ou link direto para WhatsApp.  
+   - CTA fixo no canto inferior direito em telas grandes.
+
+7. **Depoimentos e Flashs**  
+   - Slider de depoimentos; seção de flashs autorais com cards de disponibilidade.
+
+8. **Footer**  
+   - Contatos, redes sociais, aviso de direitos autorais e link para políticas.
+
+---
+
+#### Interações e animações
+- **Cursor personalizado**: SVG em forma de agulha; animação sutil ao pairar sobre elementos clicáveis.  
+- **Hover nos posts**: zoom suave, overlay com ícone; transição eased 200–300ms.  
+- **Modal**: fade + scale; foco transferido ao abrir; fechar com ESC.  
+- **Parallax**: backgrounds com movimento lento ao rolar; reduzir em mobile para performance.  
+- **Scroll personalizado**: barra fina, thumb arredondado com cor de acento.
+
+---
+
+#### Componentes UI essenciais
+- **Button**: variantes primary, secondary, ghost; bordas arredondadas suaves.  
+- **Card**: imagem, título, tag de estilo, CTA.  
+- **ModalViewer**: suporte a imagem e vídeo, legenda, navegação.  
+- **CursorProvider**: gerencia cursor SVG e estados hover.  
+- **InstagramService**: wrapper para consumir API ou JSON local.
+
+---
+
+#### Integração Instagram
+- **Opções**: usar API oficial do Instagram Basic Display ou alimentar com JSON exportado.  
+- **Requisitos**: token de acesso para puxar posts; fallback para JSON estático se não houver token.  
+- **Dados exibidos**: imagem/video, legenda curta, data, tipo (imagem/video), link externo.
+
+---
+
+#### Acessibilidade e responsividade
+- Contraste alto para textos; labels e aria-attributes em formulários; foco visível; navegação por teclado completa; imagens com alt text; vídeos com controles e captions quando disponíveis.
+
+---
+
+#### Entregáveis visuais opcionais
+- Paleta em arquivo `.ase` ou CSS variables.  
+- Kit de ícones SVG (agulha, play, close, share).  
+- Mockups em desktop, tablet e mobile (Figma/PNG).
+
+---
+
+### Microcopy sugerida
+- **Hero**: “Vitória Lima — Fineline & Blackwork | JF MG”  
+- **CTA principal**: “Ver Portfólio” / “Pedir Orçamento”  
+- **Agendamento**: “Descreva sua ideia e envie referências”  
+- **Modal**: “Fechar” / “Próximo” / “Anterior”
+
+---
+
+### Prioridades de implementação
+1. Estrutura de componentes e roteamento.  
+2. Grid de portfólio com modal acessível.  
+3. Feed Instagram com hover e modal.  
+4. Agendamento funcional com integração WhatsApp/Calendly.  
+5. Polimento visual: cursor, scroll customizado, parallax e animações.
+
+---

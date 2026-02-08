@@ -1,0 +1,28 @@
+Olá! Vou criar uma landing page profissional para a tatuadora Vitória Lima (vtori.ink).
+
+Analisando seus requisitos detalhados, vou estruturar uma aplicação moderna e responsiva com:
+
+Funcionalidades Principais:
+
+Hero section com animações e CTAs estratégicos
+Portfólio filtrável por estilos (Fineline, Blackwork, Geek)
+Integração com feed do Instagram usando a feature pré-instalada
+Sistema de agendamento com formulário e upload de referências
+Galeria de flashs autorais disponíveis
+Seção de depoimentos em slider
+Destaques Técnicos:
+
+Design responsivo mobile-first
+Paleta de cores sofisticada (preto profundo, berinjela, coral/dourado)
+Animações suaves e cursor personalizado
+Modal acessível para visualização de portfólio
+Upload de imagens de referência usando a feature pré-instalada
+Otimização de performance e SEO
+Experiência do Usuário:
+
+Navegação intuitiva entre seções
+CTA fixo para agendamento
+Lightbox para visualização ampliada das tatuagens
+Integração direta com WhatsApp
+Modo escuro por padrão com opção de tema claro
+Vou gerar o protótipo completo para você revisar antes de construir a aplicação.
